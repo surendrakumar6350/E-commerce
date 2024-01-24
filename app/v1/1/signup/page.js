@@ -13,6 +13,8 @@ import { BASE_URL } from '@/Constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { addduserdetails } from '@/app/redux/Slice'
 import { useRouter } from 'next/navigation'
+import Nav from '../../components/homeutils/Nav'
+import Footer from '../../components/homeutils/Footer'
 
 
 const page = () => {
@@ -100,12 +102,13 @@ const page = () => {
   return (
     <>
       <LoadingBar
-        color='#f11946'
+        color='black'
         progress={progress}
         onLoaderFinished={() => setProgress(0)}
       />
-      <section className="h-screen">
-        <div className="container h-full px-6 py-24">
+      <Nav />
+      <section className="">
+        <div className="container h-full px-6 py-12">
           <div
             className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
             <div className="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
@@ -281,7 +284,7 @@ const page = () => {
           </div>
         </div>
       </section>
-
+<Footer />
 
     </>
   )

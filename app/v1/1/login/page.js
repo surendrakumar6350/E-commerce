@@ -9,6 +9,8 @@ import { useMutation } from '@tanstack/react-query'
 import { loginSchema } from './logSchema'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import Nav from '../../components/homeutils/Nav'
+import Footer from '../../components/homeutils/Footer'
 
 const page = () => {
 const router = useRouter();
@@ -27,12 +29,14 @@ const router = useRouter();
     validationSchema: loginSchema,
     onSubmit: async(values) => {
       const ansss = await verifylogin.mutateAsync(values)
-    
-
         Toastify({
           text: `${ansss.data.message}`, duration: 3000, close: true, gravity: "top", position: "left", stopOnFocus: true, style: { background: `${ansss.data.success ? 'green' : "red"}`, },
         }).showToast();
-        
+        if(ansss.data.success) {
+          setTimeout(() => {
+router.push(`${BASE_URL}/v1/home`)
+          },100)
+        }
     }
   })
 
@@ -41,7 +45,8 @@ const router = useRouter();
 
   return (
     <>
-    <section className="h-screen">
+    <Nav />
+    <section className="">
   <div className="h-full">
     
     <div
@@ -130,6 +135,7 @@ const router = useRouter();
     </div>
   </div>
 </section>
+<Footer />
     </>
   )
 }

@@ -15,3 +15,8 @@ const Slicee = createSlice({
 
 export default Slicee.reducer
 export const { addduserdetails } = Slicee.actions
+
+
+
+
+

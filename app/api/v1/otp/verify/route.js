@@ -28,16 +28,19 @@ export async function POST(request) {
                     pic,
                     role: "user"
                 });
-                
-                
-                    await newUser.save();
+                 const newUserDetails =  await newUser.save();
 
-
-                return NextResponse.json({
+                 const response = NextResponse.json({
                     status: 200,
                     message: "otp verified",
                     success: true
-                });
+                })
+                response.cookies.set("user", newUserDetails._id, {
+                    expires: new Date(Date.now() * 160),
+                    path: "/"
+                })
+                return response;
+    
             }
             else {
                 return NextResponse.json({

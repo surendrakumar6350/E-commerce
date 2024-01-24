@@ -3,19 +3,26 @@ import { useState } from 'react';
 import { X } from "lucide-react";
 import Link from "next/link";
 import { Search } from "lucide-react";
+import { BASE_URL } from '@/Constants';
+import { useRouter } from 'next/navigation';
+import { FiShoppingCart } from "react-icons/fi";
 
 
 const Nav = () => {
+    const router = useRouter();
     const [menu, setMenu] = useState(false);
     const toggleMenu = () => {
         setMenu(!menu);
     };
+    const handleredirect = () => {
+        router.push(`${BASE_URL}/v1/home`)
+    }
     return (
         <>
-            <div className="md:sticky md:top-0   md:shadow-none z-20 ">
+            <div className="md:sticky md:top-0 bg-white z-50  md:shadow-none  h-[60px]">
                 <div className=" hidden lg:block animate-in fade-in zoom-in gradient p-4">
                     <div className="flex justify-between mx-[41px] items-center">
-                        <div>
+                        <div className='cursor-pointer' onClick={handleredirect}>
                             <img src="https://alternate-woo-commerce-landing-page.vercel.app//images/nav_logo.png" alt="logo" />
                         </div>
                         <div className="flex gap-[20px] xl:gap-[50px] text-[16px] items-center select-none">
@@ -46,17 +53,17 @@ const Nav = () => {
                             </p>
                         </div>
                         <div className="flex items-center gap-[40px] select-none">
-                            <p
+                            <Link href={`${BASE_URL}/v1/1/login`}
                                 className={`hover:text-primary cursor-pointer flex items-center gap-2  font-[500] text-gray`}
                             >
                                 Login
-                            </p>
+                            </Link>
                             <span className="sm:ml-3">
-      <button type="button" className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-        <svg className="-ml-0.5 mr-1.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-        </svg>
-        Publish
+      <button type="button" className="inline-flex items-center rounded-md bg-slate-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+      <div className="cart">
+  <span className="count">1</span>
+  <i className="material-icons"><FiShoppingCart /></i>
+</div>
       </button>
     </span>
 

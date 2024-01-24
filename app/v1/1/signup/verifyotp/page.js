@@ -54,9 +54,11 @@ else {
     }
     else {
       const mine = {...data, userotp: otp, id: id}
-      console.log(mine)
       const ress = await verifyotp.mutateAsync(mine)
         if(ress.data.success) {
+          setTimeout(()=> {
+router.push(`${BASE_URL}/v1/home`)
+          },200)
           Toastify({
             text: `${ress.data.message}`, duration: 3000, close: true, gravity: "top", position: "left", stopOnFocus: true, style: { background: `green`, },
           }).showToast();
