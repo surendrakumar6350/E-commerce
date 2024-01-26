@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { X } from "lucide-react";
 import Link from "next/link";
@@ -6,9 +6,13 @@ import { Search } from "lucide-react";
 import { BASE_URL } from '@/Constants';
 import { useRouter } from 'next/navigation';
 import { FiShoppingCart } from "react-icons/fi";
+import { useSelector, useDispatch } from 'react-redux';
 
 
 const Nav = () => {
+    const [value, setvalue] = useState(0)
+    const daaa = useSelector((data)=> data.cartslice.items)
+  
     const router = useRouter();
     const [menu, setMenu] = useState(false);
     const toggleMenu = () => {
@@ -17,6 +21,16 @@ const Nav = () => {
     const handleredirect = () => {
         router.push(`${BASE_URL}/v1/home`)
     }
+    const handlecartredirect = ()=> {
+        router.push(`${BASE_URL}/v1/1/cart`)
+    }
+
+useEffect(()=> {
+    const storedCart = localStorage.getItem('cart');
+    const cartlengthvalue = storedCart ? JSON.parse(storedCart) : [];
+  setvalue(cartlengthvalue.length)
+},[daaa])
+
     return (
         <>
             <div className="md:sticky md:top-0 bg-white z-50  md:shadow-none  h-[60px]">
@@ -59,9 +73,10 @@ const Nav = () => {
                                 Login
                             </Link>
                             <span className="sm:ml-3">
-      <button type="button" className="inline-flex items-center rounded-md bg-slate-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+      <button onClick={handlecartredirect} type="button" className="inline-flex items-center rounded-md bg-slate-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
       <div className="cart">
-  <span className="count">1</span>
+        {value == 0 ? null : <span className="count">{value == 0 ? null : value}</span> }
+  
   <i className="material-icons"><FiShoppingCart /></i>
 </div>
       </button>
@@ -77,7 +92,7 @@ const Nav = () => {
                         } `}
                 >
                     <div className="flex justify-between mx-[10px]">
-                        <div className="flex gap-[50px] text-[16px] items-center select-none">
+                        <div onClick={handleredirect} className="flex gap-[50px] text-[16px] items-center select-none">
                             <img src="https://alternate-woo-commerce-landing-page.vercel.app//images/nav_logo.png" alt="logo" className="w-[7rem]" />
                         </div>
                         <div className="flex items-center gap-[40px]">

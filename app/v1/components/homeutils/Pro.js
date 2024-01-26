@@ -51,13 +51,13 @@ const productids = [
 {products.map((e)=> {
   return (
         <div>
-        <Link href={`${BASE_URL}/v1/1/productdetails/${e._id}`} className="group relative mb-2 block h-80 overflow-hidden rounded-lg bg-gray-100 lg:mb-3">
+        <a href={`${BASE_URL}/v1/1/productdetails/${e._id}`} className="group relative mb-2 block h-80 overflow-hidden rounded-lg bg-gray-100 lg:mb-3">
           <img src={e.imageUrl} loading="lazy" alt="Photo by Kiran CK" className="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
           <span className="absolute left-0 top-0 rounded-br-lg bg-red-500 px-3 py-1.5 text-sm uppercase tracking-wider text-white">{e.sale}</span>
-        </Link>
+        </a>
 
         <div>
-          <Link href={`${BASE_URL}/v1/1/productdetails/${e._id}`} className="hover:gray-800 mb-1 text-gray-500 transition duration-100 lg:text-lg">{e.name}</Link>
+          <a href={`${BASE_URL}/v1/1/productdetails/${e._id}`} className="hover:gray-800 mb-1 text-gray-500 transition duration-100 lg:text-lg">{e.name}</a>
 
           <div className="flex items-end gap-2">
             <span className="font-bold text-gray-800 lg:text-lg">{e.money}</span>

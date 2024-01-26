@@ -1,11 +1,27 @@
 "use client"
+import { addToCart } from '@/app/redux/remainingSlices/cart'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Herod = () => {
+  const dispatch = useDispatch();
   const product = useSelector((state) => state.productSlice.product);
   const data = product[0];
   
+
+const hanldecartaddition = () => {
+      const storedCart = localStorage.getItem('cart');
+      const last =  storedCart ? JSON.parse(storedCart) : null;
+    if(last) {
+      const cart = [...last, data]
+        localStorage.setItem('cart', JSON.stringify(cart));
+}
+else {
+  localStorage.setItem('cart', JSON.stringify([data]));
+}
+dispatch(addToCart(data))
+}
+
   return (
     <>
     
@@ -115,7 +131,7 @@ const Herod = () => {
 
       
         <div className="flex gap-2.5">
-          <a href="#" className="inline-block flex-1 rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 sm:flex-none md:text-base">Add to cart</a>
+          <button onClick={hanldecartaddition} className="inline-block flex-1 rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 sm:flex-none md:text-base">Add to cart</button>
 
           <a href="#" className="inline-block rounded-lg bg-gray-200 px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
