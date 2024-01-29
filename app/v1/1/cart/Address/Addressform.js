@@ -1,6 +1,6 @@
 "use client"
 import { addaddress, addsteps } from '@/app/redux/remainingSlices/cart'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import { AddressSchema } from './AddressSchema'
@@ -23,6 +23,10 @@ const Addressform = () => {
             dispatch(addsteps(3))
         }
       })
+
+      useEffect(()=> {
+        window.scrollTo(0, 0);
+      },[])
     
   return (
     <>

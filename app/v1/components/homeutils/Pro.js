@@ -33,7 +33,7 @@ const productids = [
   },[]);
 
 
-  console.log(products)
+
 
   return (
     <>

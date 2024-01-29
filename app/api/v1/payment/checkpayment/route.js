@@ -14,17 +14,17 @@ try {
 if(userid) {
   const razorpay_order_id = payment.razorpay_order_id;
   const razorpay_payment_id = payment.razorpay_payment_id;
-  const pro = items.map((e) => {
-    return {
-      productId: e._id,
-      quantity: e.count,
-    }
-  })
+  // const pro = items.map((e) => {
+  //   return {
+  //     productId: e._id,
+  //     quantity: e.count,
+  //   }
+  // })
   
 if(items && address && payment && total) {
   await connectdb();
   const neworder = new orders({
-    products: pro,
+    products: items,
     user: userid,
     totalAmount: Number(total),
     payment: {

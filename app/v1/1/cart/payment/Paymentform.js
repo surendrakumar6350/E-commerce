@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 import { BASE_URL } from '@/Constants';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addordersuccess } from '@/app/redux/remainingSlices/cart';
 import { getCurrentDateAndTime } from './calcdate';
@@ -85,7 +86,9 @@ const Paymentform = ({money}) => {
 )()
 }
 
-
+useEffect(()=> {
+  window.scrollTo(0, 0);
+},[])
 
   return (
     <>
