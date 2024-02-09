@@ -67,8 +67,8 @@ return (
         <div className="flex flex-1 flex-col justify-between py-4">
           <div>
             <a href="#" className="mb-1 inline-block text-lg font-bold text-gray-800 transition duration-100 hover:text-gray-500 lg:text-xl">{e.name}</a>
-            <span className="block text-gray-500">Size: S</span>
-            <span className="block text-gray-500">Color: Black</span>
+            <span className="block text-gray-500">Size: {e.size}</span>
+            <span className="block text-gray-500">Color: {e.color}</span>
           </div>
           <div>
             <span className="mb-1 block font-bold text-gray-800 md:text-lg">&#8377;{e.money}</span>

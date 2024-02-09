@@ -96,7 +96,6 @@ const StarRating = ({props, cancel}) => {
         </form>
       </div>
 
-     
     </div>
   );
 };

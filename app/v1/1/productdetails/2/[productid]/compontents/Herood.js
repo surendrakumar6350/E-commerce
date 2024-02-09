@@ -1,15 +1,41 @@
 "use client"
 import { addToCart } from '@/app/redux/remainingSlices/cart'
 import React from 'react'
+import Toastify from 'toastify-js'
+import "toastify-js/src/toastify.css"
 import { useSelector, useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { FcLike } from "react-icons/fc";
+import { useRef } from 'react'
+
 
 const Herood = () => {
+  const [color, setcolor] = useState(1);
+  const [length, setlength] = useState(3);
+  const [btncontent, setbtncontent] = useState("Add to Cart")
+  const [loading, setloading] = useState(false);
+  const [like, setlike] = useState(true);
   const dispatch = useDispatch();
+  const raj = useRef(null);
   const product = useSelector((state) => state.productSlice.product);
   const data = product[0];
   
 
 const hanldecartaddition = () => {
+  raj.current.disabled = true;
+  const finalcolor = ()=> {
+    if(color == 1) return 'black'
+    if(color == 2) return 'brown'
+    if(color == 3) return 'gray'
+    if(color == 4) return 'white'
+  }
+  const fianllength = ()=> {
+    if(length == 1) return 'XS'
+    if(length == 2) return 'S'
+    if(length == 3) return 'M'
+    if(length == 4) return 'L'
+  }
+  setloading(true);
       const storedCart = localStorage.getItem('cart');
       const last =  storedCart ? JSON.parse(storedCart) : null;
 
@@ -18,6 +44,8 @@ const hanldecartaddition = () => {
         category: "Any",
         count: 1,
         cuttingrate: "Any",
+        color: finalcolor(),
+        size: fianllength(),
         description: data?.product.product_description,
         imageUrl: data?.product.product_photos[0],
         money: parseInt((data?.product.offer.price).replace(/[^\d.]/g, '')) * 4,
@@ -38,6 +66,14 @@ else {
   localStorage.setItem('cart', JSON.stringify([makeorder]));
 }
 dispatch(addToCart(makeorder))
+Toastify({
+  text: "Product Added to Cart", duration: 3000, close: true, gravity: "top", position: "center", stopOnFocus: true, style: { background: "green", },
+}).showToast();
+setTimeout(()=> {
+setloading(false);
+setbtncontent(`Added to Cart`)
+raj.current.style.backgroundColor = "green"
+},300)
 }
 
   return (
@@ -46,7 +82,7 @@ dispatch(addToCart(makeorder))
     <div className="bg-white py-6 sm:py-8 lg:py-12">
   <div className="mx-auto max-w-screen-lg px-4 md:px-8">
     <div className="grid gap-8 md:grid-cols-2">
-     
+     {data ?  <div>
       <div className="space-y-4">
         <div className="relative overflow-hidden rounded-lg bg-gray-100">
           <img src={data?.product.product_photos[0]} loading="lazy" alt="Photo by Himanshu Dewangan" className="h-full w-full object-cover object-center" />
@@ -63,6 +99,30 @@ dispatch(addToCart(makeorder))
           </div>
         </div>
       </div>
+
+
+     </div> :     <div className="space-y-4">
+        <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
+        <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+        </svg>
+    </div>
+ <div className="grid grid-cols-2 gap-4">
+          <div className=" h-40 flex justify-center items-center overflow-hidden rounded-lg bg-gray-100">
+           <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+        </svg>
+          </div>
+
+          <div className="h-40 flex justify-center items-center overflow-hidden rounded-lg bg-gray-100">
+            <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+        </svg>
+          </div>
+        </div>
+    
+      </div>}
+     
       
       <div className="md:py-8">
        
@@ -96,31 +156,31 @@ dispatch(addToCart(makeorder))
 
           <span className="ml-2 text-sm text-gray-500">{data?.product.product_rating}</span>
 
-          <a href="#" className="ml-4 text-sm font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">view all 47 reviews</a>
+          <button onClick={()=> window.scrollTo(0, 1100)} className="ml-4 text-sm font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">View All Reviews</button>
         </div>
        
         <div className="mb-4 md:mb-6">
-          <span className="mb-3 inline-block text-sm font-semibold text-gray-500 md:text-base">Color</span>
+        <span className="mb-3 inline-block text-sm font-semibold text-gray-500 md:text-base">Color</span>
 
-          <div className="flex flex-wrap gap-2">
-            <span className="h-8 w-8 rounded-full border bg-gray-800 ring-2 ring-gray-800 ring-offset-1 transition duration-100"></span>
-            <button type="button" className="h-8 w-8 rounded-full border bg-gray-500 ring-2 ring-transparent ring-offset-1 transition duration-100 hover:ring-gray-200"></button>
-            <button type="button" className="h-8 w-8 rounded-full border bg-gray-200 ring-2 ring-transparent ring-offset-1 transition duration-100 hover:ring-gray-200"></button>
-            <button type="button" className="h-8 w-8 rounded-full border bg-white ring-2 ring-transparent ring-offset-1 transition duration-100 hover:ring-gray-200"></button>
-          </div>
+<div className="flex flex-wrap gap-2">
+  <span onClick={()=> setcolor(1)} className={`h-8 cursor-pointer w-8 rounded-full border bg-gray-800 ${color == 1 ? "ring-2 ring-gray-800" : null}  ring-offset-1 transition duration-100`}></span>
+  <button onClick={()=> setcolor(2)} type="button" className={`h-8 w-8 rounded-full border bg-gray-500 ring-2  ring-offset-1 transition duration-100 ${color == 2 ? "ring-gray-200" : "ring-transparent"} hover:ring-gray-200`}></button>
+  <button onClick={()=> setcolor(3)} type="button" className={`h-8 w-8 rounded-full border bg-gray-200 ring-2  ring-offset-1 transition duration-100 ${color == 3 ? "ring-gray-200" : "ring-transparent"} hover:ring-gray-200`}></button>
+  <button onClick={()=> setcolor(4)} type="button" className={`h-8 w-8 rounded-full border bg-white ring-2  ring-offset-1 transition duration-100 ${color == 4 ? "ring-gray-200" : "ring-transparent"}  hover:ring-gray-200`}></button>
+</div>
         </div>
       
       
         <div className="mb-8 md:mb-10">
-          <span className="mb-3 inline-block text-sm font-semibold text-gray-500 md:text-base">Size</span>
+        <span className="mb-3 inline-block text-sm font-semibold text-gray-500 md:text-base">Size</span>
 
-          <div className="flex flex-wrap gap-3">
-            <button type="button" className="flex h-8 w-12 items-center justify-center rounded-md border bg-white text-center text-sm font-semibold text-gray-800 transition duration-100 hover:bg-gray-100 active:bg-gray-200">XS</button>
-            <button type="button" className="flex h-8 w-12 items-center justify-center rounded-md border bg-white text-center text-sm font-semibold text-gray-800 transition duration-100 hover:bg-gray-100 active:bg-gray-200">S</button>
-            <span className="flex h-8 w-12 cursor-default items-center justify-center rounded-md border border-indigo-500 bg-indigo-500 text-center text-sm font-semibold text-white">M</span>
-            <button type="button" className="flex h-8 w-12 items-center justify-center rounded-md border bg-white text-center text-sm font-semibold text-gray-800 transition duration-100 hover:bg-gray-100 active:bg-gray-200">L</button>
-            <span className="flex h-8 w-12 cursor-not-allowed items-center justify-center rounded-md border border-transparent bg-white text-center text-sm font-semibold text-gray-400">XL</span>
-          </div>
+<div className="flex flex-wrap gap-3">
+  <button onClick={()=> setlength(1)} type="button" className={`flex h-8 w-12 items-center justify-center rounded-md border ${length == 1 ? " border-indigo-500 bg-indigo-500 text-white" : "bg-white text-gray-800"}  text-center text-sm font-semibold  transition duration-100 `}>XS</button>
+  <button onClick={()=> setlength(2)} type="button" className={`flex h-8 w-12 items-center justify-center rounded-md border ${length == 2 ? " border-indigo-500 bg-indigo-500 text-white" : "bg-white text-gray-800"}  text-center text-sm font-semibold  transition duration-100 `}>S</button>
+  <button onClick={()=> setlength(3)} type="button" className={`flex h-8 w-12 items-center justify-center rounded-md border ${length == 3 ? " border-indigo-500 bg-indigo-500 text-white" : "bg-white text-gray-800"} text-center text-sm font-semibold transition duration-100 `}>M</button>
+  <button onClick={()=> setlength(4)} type="button" className={`flex h-8 w-12 items-center justify-center rounded-md border ${length == 4 ? " border-indigo-500 bg-indigo-500 text-white" : "bg-white text-gray-800"} text-center text-sm font-semibold transition duration-100 `}>L</button>
+  <span className="flex h-8 w-12 cursor-not-allowed items-center justify-center rounded-md border border-transparent bg-white text-center text-sm font-semibold text-gray-400">XL</span>
+</div>
         </div>
      
 
@@ -147,13 +207,13 @@ dispatch(addToCart(makeorder))
 
       
         <div className="flex gap-2.5">
-          <button onClick={hanldecartaddition} className="inline-block flex-1 rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 sm:flex-none md:text-base">Add to cart</button>
+          <button onClick={hanldecartaddition}  ref={raj} className="inline-block flex-1 rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 sm:flex-none md:text-base">{loading ? "Loading.." : btncontent }</button>
 
-          <a href="#" className="inline-block rounded-lg bg-gray-200 px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button onClick={()=> setlike((pre)=> !pre)} className="inline-block rounded-lg bg-gray-200 px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">
+            {like ? <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-          </a>
+            </svg> : <FcLike style={{fontSize: "24px"}} />}
+          </button>
         </div>
       
 

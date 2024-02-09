@@ -115,8 +115,8 @@ useEffect(()=> {
      <h3 className="text-xl dark:text-white xl:text-2xl font-semibold leading-6 text-gray-800">{e.name}</h3>
      <div className="flex justify-start items-start flex-col space-y-2">
        <p className="text-sm dark:text-white leading-none text-gray-800"><span className="dark:text-gray-400 text-gray-300">Brand: </span> {e.brand}</p>
-       <p className="text-sm dark:text-white leading-none text-gray-800"><span className="dark:text-gray-400 text-gray-300">Size: </span> Small</p>
-       <p className="text-sm dark:text-white leading-none text-gray-800"><span className="dark:text-gray-400 text-gray-300">Color: </span> Light Blue</p>
+       <p className="text-sm dark:text-white leading-none text-gray-800"><span className="dark:text-gray-400 text-gray-300">Size: </span> {e.size}</p>
+       <p className="text-sm dark:text-white leading-none text-gray-800"><span className="dark:text-gray-400 text-gray-300">Color: </span> {e.color}</p>
      </div>
    </div>
    <div className="flex justify-between space-x-8 items-start w-full">

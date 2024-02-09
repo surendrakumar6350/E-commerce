@@ -11,8 +11,8 @@ const Pro = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.HomeProductSlice.data);
 const productids = [
-  "65b1015e1d2ebe4997300007","65b101551d2ebe4997300006","65b1014d1d2ebe4997300005","65b101441d2ebe4997300004","65b1011d1d2ebe4997300003",
-  "65b101031d2ebe4997300002","65b100ca1d2ebe4997300000","65b0ffa01d2ebe49972ffffe"
+  "65c644b675cd37e839398e27","65b1011d1d2ebe4997300003","65c644b675cd37e839398e27","65c644b675cd37e839398e27","65c644b675cd37e839398e27",
+  "65c644b675cd37e839398e27","65b1011d1d2ebe4997300003","65b1011d1d2ebe4997300003"
 ]
 
   const getProductDetails = useMutation({
