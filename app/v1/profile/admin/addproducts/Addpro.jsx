@@ -62,7 +62,7 @@ const Addpro = () => {
         if (result.url) {
           if(progress == 0) { setpiclink((pre)=> ({...pre, url: result.url})); setdata((pre)=> ({...pre, imageUrl: result.url}));}
           if(progress == 1) setpiclink((pre)=> ({...pre, url2: result.url}))
-          if(progress == 2) { setpiclink((pre)=> ({...pre, url3: result.url})); setdata((pre)=> ({...pre, url: piclink})) }
+          if(progress == 2) { setpiclink((pre)=> ({...pre, url3: result.url})); setdata((pre)=> ({...pre, url: piclink})); }
         setProgress((pre)=> pre + 1)
           setprocess("upload")
         }

@@ -65,31 +65,7 @@ const Nav = () => {
                             <img src="https://alternate-woo-commerce-landing-page.vercel.app//images/nav_logo.png" alt="logo" />
                         </div>
                         <div className="flex gap-[20px] xl:gap-[50px]  text-[16px] items-center select-none">
-                            <p
-                                className={`hover:text-primary cursor-pointer flex items-center gap-2  font-[500] text-gray`}
-                            >
-                                Sell
-                            </p>
-                            <p
-                                className={`hover:text-primary cursor-pointer flex items-center gap-2  font-[500] text-gray`}
-                            >
-                                MarketPlace
-                            </p>
-                            <p
-                                className={`hover:text-primary cursor-pointer flex items-center gap-2  font-[500] text-gray`}
-                            >
-                                Community
-                            </p>
-                            <p
-                                className={`hover:text-primary cursor-pointer flex items-center gap-2  font-[500] text-gray`}
-                            >
-                                Develop
-                            </p>
-                            <p
-                                className={`hover:text-primary cursor-pointer flex items-center gap-2  font-[500] text-gray`}
-                            >
-                                Resources
-                            </p>
+                           
 
                         </div>
 
@@ -156,9 +132,6 @@ const Nav = () => {
                         <div className="my-8 select-none animate-in slide-in-from-right">
                             <div className="flex flex-col gap-8 mt-8 mx-4">
                                 
-                                <p className={`text-black cursor-pointer`}>MarketPlace</p>
-                                <p className={`text-black cursor-pointer`}>Community</p>
-                                <p className={`text-black cursor-pointer`}>Develop</p>
                                 <Link href={`${BASE_URL}/v1/1/search`} className={`text-black cursor-pointer`}>Search</Link>
                                 <Link href={`${BASE_URL}/v1/1/cart`} className={`text-black cursor-pointer`}>Cart</Link>
 
@@ -168,8 +141,13 @@ const Nav = () => {
                                     </Link>
                                 </div>
                                 <div className={`${(user?.user?.username) ? null : "hidden"} flex flex-col gap-[40px] select-none`}>
-                                    <Link href={`  ${(user?.user?.role == "user") ? BASE_URL + '/v1/profile/user' : BASE_URL + '/v1/profile/admin' }   `} className={`${(user?.user?.username) ? null : "hidden"}  text-black cursor-pointer`}>
-                                        Profile
+                                    <Link href={`  ${BASE_URL + '/v1/profile/user'}   `} className={`${(user?.user?.username) ? null : "hidden"}  text-black cursor-pointer`}>
+                                        Your Orders
+                                    </Link>
+                                </div>
+                                <div className={`${(user?.user?.role == "admin") ? null : "hidden"} flex flex-col gap-[40px] select-none`}>
+                                    <Link href={`  ${BASE_URL + '/v1/profile/admin'}   `} className={`${(user?.user?.role == "admin") ? null : "hidden"}  text-black cursor-pointer`}>
+                                      Admin panel
                                     </Link>
                                 </div>
                             </div>

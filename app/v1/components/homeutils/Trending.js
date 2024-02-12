@@ -4,45 +4,59 @@ import React from 'react'
 const Trending = () => {
   return (
    <>
-   <div className="bg-white py-6 sm:py-8 lg:py-12">
-  <div className="mx-auto max-w-screen-xl px-4 md:px-8">
+ 
+    <section class="text-gray-600 body-font">
+  <div class="container px-5  mx-auto">
+  <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Trending Products   </h2>
 
-    <div className="mb-8 md:mb-12">
-      <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Trending Products   </h2>
-
-      {/* <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random or otherwise generated.</p> */}
-    </div>
-  
-
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:gap-8">
+    <div class="flex flex-wrap -m-4">
+      <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+        <a class="block relative h-48 rounded overflow-hidden">
+          <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260" />
+        </a>
+        <div class="mt-4">
+          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+          <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
+          <p class="mt-1">$16.00</p>
+        </div>
+      </div>
+      <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+        <a class="block relative h-48 rounded overflow-hidden">
+          <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/421x261" />
+        </a>
+        <div class="mt-4">
+          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+          <h2 class="text-gray-900 title-font text-lg font-medium">Shooting Stars</h2>
+          <p class="mt-1">$21.15</p>
+        </div>
+      </div>
+      <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+        <a class="block relative h-48 rounded overflow-hidden">
+          <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/422x262" />
+        </a>
+        <div class="mt-4">
+          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+          <h2 class="text-gray-900 title-font text-lg font-medium">Neptune</h2>
+          <p class="mt-1">$12.00</p>
+        </div>
+      </div>
+      <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+        <a class="block relative h-48 rounded overflow-hidden">
+          <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/423x263" />
+        </a>
+        <div class="mt-4">
+          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+          <h2 class="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
+          <p class="mt-1">$18.40</p>
+        </div>
+      </div>
      
-      <div className="flex flex-col items-center justify-center rounded-lg bg-gray-100 p-4 lg:p-8">
-        <div className="text-xl font-bold text-indigo-500 sm:text-2xl md:text-3xl">200</div>
-        <div className="text-sm font-semibold sm:text-base">People</div>
-      </div>
-    
-
-      <div className="flex flex-col items-center justify-center rounded-lg bg-gray-100 p-4 md:p-8">
-        <div className="text-xl font-bold text-indigo-500 sm:text-2xl md:text-3xl">500+</div>
-        <div className="text-sm font-semibold sm:text-base">People</div>
-      </div>
-
-     
-      <div className="flex flex-col items-center justify-center rounded-lg bg-gray-100 p-4 md:p-8">
-        <div className="text-xl font-bold text-indigo-500 sm:text-2xl md:text-3xl">1000+</div>
-        <div className="text-sm font-semibold sm:text-base">Customers</div>
-      </div>
-    
-
-      
-      <div className="flex flex-col items-center justify-center rounded-lg bg-gray-100 p-4 md:p-8">
-        <div className="text-xl font-bold text-indigo-500 sm:text-2xl md:text-3xl">A couple</div>
-        <div className="text-sm font-semibold sm:text-base">Coffee breaks</div>
-      </div>
-  
+   
+   
     </div>
   </div>
-</div>
+</section>
+ 
    </>
   )
 }

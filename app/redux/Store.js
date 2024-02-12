@@ -5,6 +5,7 @@ import reviewSlice from "./remainingSlices/Reviews";
 import HomeProductSlice from "./remainingSlices/Homeproducts";
 import cartslice from "./remainingSlices/cart";
 import usersSlice from "./remainingSlices/allusers";
+import paymentSlice from "./remainingSlices/payment";
 
 export const Store = configureStore({
     reducer : {
@@ -13,7 +14,8 @@ productSlice: productSlice,
 reviewSlice: reviewSlice,
 HomeProductSlice: HomeProductSlice,
 cartslice: cartslice,
-usersSlice: usersSlice
+usersSlice: usersSlice,
+paymentSlice: paymentSlice
     }
 })
 

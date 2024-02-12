@@ -9,7 +9,7 @@ const initialState = {
     initialState,
     reducers: {
       addhomeproducts: (state, action) => {
-        state.data.push(action.payload);
+        state.data = action.payload;
       },
     },
   });
