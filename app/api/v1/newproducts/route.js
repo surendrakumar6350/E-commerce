@@ -9,12 +9,23 @@ export async function POST(request) {
 
 try {
     await connectdb();
-    const product =  await products.findOne({_id: id});
+    const product =  await products.find({count: 1});
     if(product) {
+       let len = product.length;
+       let newarr = [];
+       let filter = [len - 1, len - 2, len - 3, len - 4];
+       filter.map((a)=> {
+        product.map((e)=> {
+            if(e.index == a) {
+                newarr = [...newarr, e]
+            }
+           })
+       })
+
         return NextResponse.json({
             status: 200,
             success: true,
-            product: product
+            product: newarr
         })
     } else { 
         return NextResponse.json({

@@ -39,6 +39,10 @@ const productSchema = new Schema({
     type: Object,
     required: true,
   },
+  index: {
+    type: Number,
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

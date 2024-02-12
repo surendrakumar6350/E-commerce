@@ -11,7 +11,7 @@ export async function POST(request) {
 
     try {
         await connectdb();
-        
+        const index =  await products.find({count: 1});
         if (name) {
             const newproduct = new products({
                   name: name,
@@ -26,7 +26,8 @@ export async function POST(request) {
                   cuttingrate: cuttingrate,
                   count: Number(1),
                   rating: rating,
-                  url: url
+                  url: url,
+                  index: index.length
             });
            
                 const productdetails = await newproduct.save();
