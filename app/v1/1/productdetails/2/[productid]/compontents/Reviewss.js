@@ -35,7 +35,7 @@ const options = {
       language: 'en'
     },
     headers: {
-      'X-RapidAPI-Key': '2bce29759dmshd3de81d7dcccb57p16a50bjsn256ae22c4f85',
+      'X-RapidAPI-Key': '96de126bbemsh8dab720dffbf1bdp1f78c5jsn1141e3c741fb',
       'X-RapidAPI-Host': 'real-time-product-search.p.rapidapi.com'
     }
   };
@@ -73,7 +73,7 @@ const options = {
       
       <div className={`${data[0] ? null : "hidden"} md:w-[50%] flex flex-col gap-3 py-4 md:py-8`}>
         <div>
-          <span className="block text-sm font-bold">{data[0]?.review_author}</span>
+          <span className="block text-sm font-bold">{data[0]?.review_author ? data[0]?.review_author : "user"}</span>
           <span className="block text-sm text-gray-500">{formatUserFriendlyDate(data[0]?.review_datetime_utc)}</span>
         </div>
 
@@ -101,14 +101,14 @@ const options = {
         </div>
        
 
-        <p className="text-gray-600">{data[0]?.review_text}</p>
+        <p className="text-gray-600 pr-5">{data[0]?.review_text}</p>
       </div>
       
 
      
       <div className={`${data[1] ? null : "hidden"} md:w-[50%] flex flex-col gap-3 py-4 md:py-8`}>
         <div>
-          <span className="block text-sm font-bold">{data[1]?.review_author}</span>
+          <span className="block text-sm font-bold">{data[1]?.review_author ? data[1]?.review_author : "user"}</span>
           <span className="block text-sm text-gray-500">{formatUserFriendlyDate(data[1]?.review_datetime_utc)}</span>
         </div>
 
@@ -136,13 +136,13 @@ const options = {
         </div>
        
 
-        <p className="text-gray-600">{data[1]?.review_text}</p>
+        <p className="text-gray-600 pr-5">{data[1]?.review_text}</p>
       </div>
 
  
       <div className={`${data[2] ? null : "hidden"} md:w-[50%] flex flex-col gap-3 py-4 md:py-8`}>
         <div>
-          <span className="block text-sm font-bold">{data[2]?.review_author}</span>
+          <span className="block text-sm font-bold">{data[2]?.review_author ? data[2]?.review_author : "user"}</span>
           <span className="block text-sm text-gray-500">{formatUserFriendlyDate(data[2]?.review_datetime_utc)}</span>
         </div>
 
@@ -170,7 +170,7 @@ const options = {
         </div>
        
 
-        <p className="text-gray-600">{data[2]?.review_text}</p>
+        <p className="text-gray-600 pr-5">{data[2]?.review_text}</p>
       </div>
       
 
@@ -178,7 +178,7 @@ const options = {
 
       <div className={`${data[3] ? null : "hidden"} md:w-[50%] flex flex-col gap-3 py-4 md:py-8`}>
         <div>
-          <span className="block text-sm font-bold">{data[3]?.review_author}</span>
+          <span className="block text-sm font-bold">{data[3]?.review_author ? data[3]?.review_author : "user"}</span>
           <span className="block text-sm text-gray-500">{formatUserFriendlyDate(data[3]?.review_datetime_utc)}</span>
         </div>
 
@@ -206,7 +206,7 @@ const options = {
         </div>
        
 
-        <p className="text-gray-600">{data[3]?.review_text}</p>
+        <p className="text-gray-600 pr-5">{data[3]?.review_text}</p>
       </div>
 
 

@@ -10,11 +10,14 @@ import axios from 'axios'
 const page = () => {
     const [searchdata, setsearchdata] = useState();
     const [result, setresult] = useState();
+    const [loading, setloading] = useState(false);
+    const [hidden, sethidden] = useState(false);
 
 
     const handleclick = (e)=> {
         e.preventDefault();
-
+setloading(true);
+sethidden(true);
 
         const options = {
             method: 'GET',
@@ -34,8 +37,10 @@ const page = () => {
                 try {
                     const response = await axios.request(options);
                     setresult(response.data.data);
+                    setloading(false);
                 } catch (error) {
                     console.error(error);
+                    setloading(false);
                 }
             })()
 
@@ -46,8 +51,8 @@ const page = () => {
   return (
     <>
       <Nav />
-      <SearchBar search={searchdata} get={result} set={setsearchdata} handle={handleclick} />
-      <Results result={result} />
+      <SearchBar loading={loading} search={searchdata} get={result} set={setsearchdata} handle={handleclick} />
+      <Results loading={loading} result={result} />
       <Footer />
     </>
   )

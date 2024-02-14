@@ -30,7 +30,7 @@ const router = useRouter();
     onSubmit: async(values) => {
       const ansss = await verifylogin.mutateAsync(values)
         Toastify({
-          text: `${ansss.data.message}`, duration: 3000, close: true, gravity: "top", position: "left", stopOnFocus: true, style: { background: `${ansss.data.success ? 'green' : "red"}`, },
+          text: `${ansss.data.message}`, duration: 3000, close: true, gravity: "top", position: "center", stopOnFocus: true, style: { background: `${ansss.data.success ? 'green' : "red"}`, },
         }).showToast();
         if(ansss.data.success) {
           setTimeout(() => {

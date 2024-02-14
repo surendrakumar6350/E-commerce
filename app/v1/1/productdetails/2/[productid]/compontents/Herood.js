@@ -91,11 +91,11 @@ raj.current.style.backgroundColor = "green"
 
         <div className="grid grid-cols-2 gap-4">
           <div className="overflow-hidden rounded-lg bg-gray-100">
-            <img src={data?.product.product_photos[1]} loading="lazy" alt="Photo by Himanshu Dewangan" className="h-full w-full object-cover object-center" />
+            <img src={data?.product.product_photos[1] ?  data?.product.product_photos[1]  : "/noimage.png"} loading="lazy" alt="Photo by Himanshu Dewangan" className="h-full w-full object-cover object-center" />
           </div>
 
           <div className="overflow-hidden rounded-lg bg-gray-100">
-            <img src={data?.product.product_photos[2]} loading="lazy" alt="Photo by Himanshu Dewangan" className="h-full w-full object-cover object-center" />
+            <img src={data?.product.product_photos[2] ? data?.product.product_photos[1] : "/noimage.png"} loading="lazy" alt="Photo by Himanshu Dewangan" className="h-full w-full object-cover object-center" />
           </div>
         </div>
       </div>

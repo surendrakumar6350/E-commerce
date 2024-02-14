@@ -30,7 +30,7 @@ const ProList = () => {
     }, [resp]);
     return (
         <>
-<div class="table-users">
+<div style={{overflow: "scroll"}} class="table-users overflow-scroll scrollbar-none">
     <h1 className='text-center text-lg font-bold pt-5 pl-9 md:pl-0'>Change Orders Status</h1>
             <div className='h-screen flex justify-center items-center  flex-wrap w-full pl-11 '>
                 <Orders a={setresp} value={value} setvalue={setvalue} orders={products} />

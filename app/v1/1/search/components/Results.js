@@ -5,7 +5,7 @@ import Link from "next/link";
 import { BASE_URL } from "@/Constants";
 
 
-const Results = ({result}) => {
+const Results = ({result, loading}) => {
     const [data, setdata] = useState([]);
     useEffect(()=> {
 setdata(result)
@@ -163,7 +163,7 @@ return (
                 <span className="text-gray-400 mr-3 uppercase text-xs">{e.offer.store_name}</span>
                 <p className="text-lg font-bold text-black truncate block capitalize">{e.product_title}</p>
                 <div className="flex items-center">
-                    <p className="text-lg font-semibold text-black cursor-auto my-3">{`${parseInt((e.offer.price).replace(/[^\d.]/g, '')) * 4}`}</p>
+                    <p className="text-lg font-semibold text-black cursor-auto my-3">&#8377;{`${parseInt((e.offer.price).replace(/[^\d.]/g, '')) * 4}`}</p>
                     <del>
                     </del>
                     <div className="ml-auto">
@@ -196,7 +196,10 @@ return (
         </Link>
     </div>
 )
-  })}  
+  })} 
+
+
+
    
 
 </section>

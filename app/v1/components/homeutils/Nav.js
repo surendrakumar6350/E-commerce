@@ -11,12 +11,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import { Hidden } from '@mui/material';
+import LoadingBar from 'react-top-loading-bar'
+import { useRef } from 'react';
 
 
 const Nav = () => {
     const [user, setuser] = useState([]);
     const [value, setvalue] = useState(0)
     const daaa = useSelector((data) => data.cartslice.items)
+    const ref = useRef(null)
 
     const router = useRouter();
     const [menu, setMenu] = useState(false);
@@ -24,10 +27,14 @@ const Nav = () => {
         setMenu(!menu);
     };
     const handleredirect = () => {
+        ref.current.continuousStart()
         router.push(`${BASE_URL}/v1/home`)
+        ref.current.complete()
     }
     const handlecartredirect = () => {
+        ref.current.continuousStart()
         router.push(`${BASE_URL}/v1/1/cart`)
+        ref.current.complete()
     }
 
     useEffect(() => {
@@ -58,6 +65,7 @@ const Nav = () => {
 
     return (
         <>
+        <LoadingBar color='#f11946' ref={ref} />
             <div className="md:sticky md:top-0 bg-white z-50  md:shadow-none  h-[60px]">
                 <div className=" hidden lg:block animate-in fade-in zoom-in gradient p-4">
                     <div className={` ${(user.length == 0) ? "hidden" : null} flex justify-between mx-[41px] items-center `}>
@@ -76,7 +84,9 @@ const Nav = () => {
                                 Login
                             </Link>
                             <Search className='hover:scale-125 cursor-pointer' onClick={() => {
+                                ref.current.continuousStart()
                                 router.push(`${BASE_URL}/v1/1/search`);
+                                ref.current.complete()
                             }} />
 
                             <Link href={`  ${(user?.user?.role == "user") ? BASE_URL + '/v1/profile/user' : BASE_URL + '/v1/profile/admin' }   `} className={`${(user?.user) ? null : "hidden"} hover:scale-125 flex items-center focus:outline-none`} aria-label="toggle profile dropdown">

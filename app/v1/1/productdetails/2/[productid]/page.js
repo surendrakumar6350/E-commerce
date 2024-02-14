@@ -31,7 +31,7 @@ const page = ({params}) => {
             language: 'en'
           },
           headers: {
-            'X-RapidAPI-Key': '2bce29759dmshd3de81d7dcccb57p16a50bjsn256ae22c4f85',
+            'X-RapidAPI-Key': 'ea4a1125b2msh87054bde47ab6c2p1d7d6djsn2a7b5a64eeb2',
             'X-RapidAPI-Host': 'real-time-product-search.p.rapidapi.com'
           }
         };
