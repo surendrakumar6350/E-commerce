@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from 'react'
-import { BASE_URL } from '@/Constants'
+import { BASE_URL, PRODUCT_DETAILS_HOST, PRODUCT_DETAILS_KEY } from '@/Constants'
 import Footer from '@/app/v1/components/homeutils/Footer'
 import Reviewss from './compontents/Reviewss'
 import Nav from '@/app/v1/components/homeutils/Nav'
@@ -31,8 +31,8 @@ const page = ({params}) => {
             language: 'en'
           },
           headers: {
-            'X-RapidAPI-Key': 'ea4a1125b2msh87054bde47ab6c2p1d7d6djsn2a7b5a64eeb2',
-            'X-RapidAPI-Host': 'real-time-product-search.p.rapidapi.com'
+            'X-RapidAPI-Key': PRODUCT_DETAILS_KEY,
+            'X-RapidAPI-Host': PRODUCT_DETAILS_HOST
           }
         };
         

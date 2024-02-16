@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addreview } from '@/app/redux/remainingSlices/Reviews';
+import { PRODUCT_REVIEWS_HOST, PRODUCT_REVIEWS_KEY } from '@/Constants';
 
 const Reviewss = ({props}) => {
  const dispatch = useDispatch()
@@ -35,8 +36,8 @@ const options = {
       language: 'en'
     },
     headers: {
-      'X-RapidAPI-Key': '96de126bbemsh8dab720dffbf1bdp1f78c5jsn1141e3c741fb',
-      'X-RapidAPI-Host': 'real-time-product-search.p.rapidapi.com'
+      'X-RapidAPI-Key': PRODUCT_REVIEWS_KEY,
+      'X-RapidAPI-Host': PRODUCT_REVIEWS_HOST
     }
   };
   

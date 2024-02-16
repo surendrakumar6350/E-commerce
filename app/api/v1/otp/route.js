@@ -47,7 +47,7 @@ export async function POST(request) {
             service: "gmail",
             auth: {
                 user: process.env.GMAIL,
-                pass: "jele zgqt akkd goya",
+                pass: process.env.GMAILPASSWORD,
             },
         });
 

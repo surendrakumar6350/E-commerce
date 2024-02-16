@@ -37,14 +37,14 @@ export async function POST(request) {
                 const transporter = nodemailer.createTransport({
                     service: "gmail",
                     auth: {
-                        user: "papa.kaa.dinosaur@gmail.com",
-                        pass: "jele zgqt akkd goya",
+                        user: process.env.GMAIL,
+                        pass: process.env.GMAILPASSWORD,
                     },
                 });
                 async function main() {
                   
                     const info = await transporter.sendMail({
-                        from: 'papa.kaa.dinosaur@gmail.com',
+                        from: process.env.GMAIL,
                         to: `${address.email}`,
                         subject: `Thank You for Your Order: ${data._id}`,
                         text: "",
