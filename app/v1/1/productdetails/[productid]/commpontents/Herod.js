@@ -45,9 +45,7 @@ const Herod = () => {
       localStorage.setItem('cart', JSON.stringify([newData]));
     }
     dispatch(addToCart(newData))
-    Toastify({
-      text: "Product Added to Cart", duration: 3000, close: true, gravity: "top", position: "center", stopOnFocus: true, style: { background: "green", },
-    }).showToast();
+   
     setTimeout(() => {
       setloading(false);
       setbtncontent(`Added to Cart`)

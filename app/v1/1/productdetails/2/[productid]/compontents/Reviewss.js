@@ -64,7 +64,7 @@ const options = {
     <div className="mb-4 flex items-center justify-between border-t border-b py-4">
       <div className="flex flex-col gap-0.5">
        
-        <span className="block font-bold">Total {data.length} Reviews</span>
+        <span className="block font-bold">Total {data?.length} Reviews</span>
 {/* <button className="inline-block rounded-lg border bg-white px-4 py-2 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-100 focus-visible:ring active:bg-gray-200 md:px-8 md:py-3 md:text-base">View All Reviews</button> */}
       </div>
 

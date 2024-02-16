@@ -10,10 +10,10 @@ import { MdAddCircle } from "react-icons/md";
 import { PiListNumbersDuotone } from "react-icons/pi";
 import { Button } from '@mui/material'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
-const AdminNav = ({state}) => {
-    const [user, setuser] = useState()
-
+const AdminNav = ({state, user, setuser}) => {
+    const router = useRouter();
     const getuser = useMutation({
         mutationFn: () => {
             return axios.post(`${BASE_URL}/api/v1/getuser`)

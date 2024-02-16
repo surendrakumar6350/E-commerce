@@ -40,21 +40,21 @@ const hanldecartaddition = () => {
       const last =  storedCart ? JSON.parse(storedCart) : null;
 
     let makeorder = {
-        brand: data?.product.offer.store_name,
+        brand: data?.product?.offer.store_name,
         category: "Any",
         count: 1,
         cuttingrate: "Any",
         color: finalcolor(),
         size: fianllength(),
-        description: data?.product.product_description,
-        imageUrl: data?.product.product_photos[0],
-        money: parseInt((data?.product.offer.price).replace(/[^\d.]/g, '')) * 4,
-        name: data?.product.product_title,
-        rating: data?.product.product_rating,
+        description: data?.product?.product_description,
+        imageUrl: data?.product?.product_photos[0],
+        money: parseInt((data?.product?.offer.price).replace(/[^\d.]/g, '')) * 4,
+        name: data?.product?.product_title,
+        rating: data?.product?.product_rating,
         sale: "Not In Sale",
         stockQuantity: 100,
-        totalmoneyforcart:  parseInt((data?.product.offer.price).replace(/[^\d.]/g, '')) * 4,
-        _id: data?.product.product_id,
+        totalmoneyforcart:  parseInt((data?.product?.offer.price).replace(/[^\d.]/g, '')) * 4,
+        _id: data?.product?.product_id,
       }
       
 
@@ -85,17 +85,17 @@ raj.current.style.backgroundColor = "green"
      {data ?  <div>
       <div className="space-y-4">
         <div className="relative overflow-hidden rounded-lg bg-gray-100">
-          <img src={data?.product.product_photos[0]} loading="lazy" alt="Photo by Himanshu Dewangan" className="h-full w-full object-cover object-center" />
+          <img src={data?.product?.product_photos[0]} loading="lazy" alt="Photo by Himanshu Dewangan" className="h-full w-full object-cover object-center" />
 
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div className="overflow-hidden rounded-lg bg-gray-100">
-            <img src={data?.product.product_photos[1] ?  data?.product.product_photos[1]  : "/noimage.png"} loading="lazy" alt="Photo by Himanshu Dewangan" className="h-full w-full object-cover object-center" />
+            <img src={data?.product?.product_photos[1] ?  data?.product?.product_photos[1]  : "/noimage.png"} loading="lazy" alt="Photo by Himanshu Dewangan" className="h-full w-full object-cover object-center" />
           </div>
 
           <div className="overflow-hidden rounded-lg bg-gray-100">
-            <img src={data?.product.product_photos[2] ? data?.product.product_photos[1] : "/noimage.png"} loading="lazy" alt="Photo by Himanshu Dewangan" className="h-full w-full object-cover object-center" />
+            <img src={data?.product?.product_photos[2] ? data?.product?.product_photos[1] : "/noimage.png"} loading="lazy" alt="Photo by Himanshu Dewangan" className="h-full w-full object-cover object-center" />
           </div>
         </div>
       </div>
@@ -127,34 +127,34 @@ raj.current.style.backgroundColor = "green"
       <div className="md:py-8">
        
         <div className="mb-2 md:mb-3">
-          <span className="mb-0.5 inline-block text-gray-500">{data?.product.offer.store_name}</span>
-          <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl">{data?.product.product_title}</h2>
+          <span className="mb-0.5 inline-block text-gray-500">{data?.product?.offer.store_name}</span>
+          <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl">{data?.product?.product_title}</h2>
         </div>
         
         <div className="mb-6 flex items-center md:mb-10">
           <div className="-ml-1 flex gap-0.5">
-            <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${(data?.product.product_rating > 0) ? "text-yellow-400" : "text-gray-300"}`} viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${(data?.product?.product_rating > 0) ? "text-yellow-400" : "text-gray-300"}`} viewBox="0 0 20 20" fill="currentColor">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
 
-            <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${(data?.product.product_rating > 1) ? "text-yellow-400" : "text-gray-300"}`} viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${(data?.product?.product_rating > 1) ? "text-yellow-400" : "text-gray-300"}`} viewBox="0 0 20 20" fill="currentColor">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
 
-            <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${(data?.product.product_rating > 2) ? "text-yellow-400" : "text-gray-300"}`} viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${(data?.product?.product_rating > 2) ? "text-yellow-400" : "text-gray-300"}`} viewBox="0 0 20 20" fill="currentColor">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
 
-            <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${(data?.product.product_rating > 3) ? "text-yellow-400" : "text-gray-300"}`}  viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${(data?.product?.product_rating > 3) ? "text-yellow-400" : "text-gray-300"}`}  viewBox="0 0 20 20" fill="currentColor">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
 
-            <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${(data?.product.product_rating > 4) ? "text-yellow-400" : "text-gray-300"}`} viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${(data?.product?.product_rating > 4) ? "text-yellow-400" : "text-gray-300"}`} viewBox="0 0 20 20" fill="currentColor">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
           </div>
 
-          <span className="ml-2 text-sm text-gray-500">{data?.product.product_rating}</span>
+          <span className="ml-2 text-sm text-gray-500">{data?.product?.product_rating}</span>
         </div>
        
         <div className="mb-4 md:mb-6">
@@ -185,7 +185,7 @@ raj.current.style.backgroundColor = "green"
      
         <div className="mb-4">
           <div className="flex items-end gap-2">
-            <span className="text-xl font-bold text-gray-800 md:text-2xl">&#x20B9;{data ? parseInt((data?.product.offer.price).replace(/[^\d.]/g, '')) * 4 : null}</span>
+            <span className="text-xl font-bold text-gray-800 md:text-2xl">&#x20B9;{data ? parseInt((data?.product?.offer.price).replace(/[^\d.]/g, '')) * 4 : null}</span>
           </div>
 
           <span className="text-sm text-gray-500">incl. VAT plus shipping</span>
@@ -220,7 +220,7 @@ raj.current.style.backgroundColor = "green"
           <div className="mb-3 text-lg font-semibold text-gray-800">Description</div>
 
           <p className="text-gray-500">
-            {data?.product.product_description}
+            {data?.product?.product_description}
           </p>
         </div>
       

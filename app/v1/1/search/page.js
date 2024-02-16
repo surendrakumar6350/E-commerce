@@ -1,5 +1,6 @@
 "use client"
-import React from 'react'
+import React, { useRef } from 'react'
+import LoadingBar from 'react-top-loading-bar'
 import { useState } from 'react'
 import Nav from '../../components/homeutils/Nav'
 import Footer from '../../components/homeutils/Footer'
@@ -9,6 +10,7 @@ import axios from 'axios'
 import { SEARCH_HOST, SEARCH_KEY } from '@/Constants'
 
 const page = () => {
+  const ref = useRef(null)
   const [searchdata, setsearchdata] = useState();
   const [result, setresult] = useState();
   const [loading, setloading] = useState(false);
@@ -36,12 +38,15 @@ const page = () => {
 
     (async () => {
       try {
+        ref.current.continuousStart()
         const response = await axios.request(options);
         setresult(response.data.data);
         setloading(false);
+        ref.current.complete()
       } catch (error) {
         console.error(error);
         setloading(false);
+        ref.current.complete()
       }
     })()
 
@@ -51,6 +56,7 @@ const page = () => {
 
   return (
     <>
+     <LoadingBar color='#f11946' ref={ref} />
       <Nav />
       <SearchBar loading={loading} search={searchdata} get={result} set={setsearchdata} handle={handleclick} />
       <Results loading={loading} result={result} />

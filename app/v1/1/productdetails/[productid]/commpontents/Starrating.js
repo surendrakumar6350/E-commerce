@@ -1,5 +1,7 @@
 "use client"
 import React, { useState } from 'react';
+import  { useRef } from 'react'
+import LoadingBar from 'react-top-loading-bar'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios';
 import { BASE_URL } from '@/Constants';
@@ -9,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { addreview } from '@/app/redux/remainingSlices/Reviews';
 
 const StarRating = ({props, cancel}) => {
+  const ref = useRef(null)
   const dispatch = useDispatch();
   const productId = props;
   const [rating, setRating] = useState(null);
@@ -31,18 +34,21 @@ const StarRating = ({props, cancel}) => {
   };
 
   const handleSubmitReview = (e) => {
+    ref.current.continuousStart()
     e.preventDefault();
     (
       async () => {
       const ansss = await createreveiw.mutateAsync({rating: rating, review: review, productId: productId });
      if(ansss.data.success) {
+      ref.current.complete()
       Toastify({
-        text: "Review Added Successfully", duration: 3000, close: true, gravity: "top", position: "left", stopOnFocus: true, style: { background: "green", },
+        text: "Review Added Successfully", duration: 3000, close: true, gravity: "top", position: "center", stopOnFocus: true, style: { background: "green", },
       }).showToast();
       cancel();
       dispatch(addreview(ansss.data.data))
      }
      else {
+      ref.current.complete()
       Toastify({
         text: "Error   All fields are required", duration: 3000, close: true, gravity: "top", position: "left", stopOnFocus: true, style: { background: "red", },
       }).showToast();
@@ -53,7 +59,9 @@ const StarRating = ({props, cancel}) => {
   };
 
   return (
+   
     <div className="text-center p-8">
+       <LoadingBar color='#f11946' ref={ref} />
       <h2 className="text-2xl font-bold mb-4">Product Rating</h2>
       <form>
         {[1, 2, 3, 4, 5].map((value) => (
