@@ -46,15 +46,15 @@ export async function POST(request) {
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: "woocommerce.vercel@gmail.com",
-                pass: "ljhw ubqc nkfl ifyq",
+                user: process.env.GMAIL,
+                pass: "jele zgqt akkd goya",
             },
         });
 
         // async..await is not allowed in global scope, must use a wrapper
         async function main() {
             const info = await transporter.sendMail({
-                from: 'woocommerce.vercel@gmail.com',
+                from: process.env.GMAIL,
                 to: email,
                 subject: "Welcome! Verify Your Signup with OTP",
                 text: "",

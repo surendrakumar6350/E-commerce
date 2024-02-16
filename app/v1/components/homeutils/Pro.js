@@ -62,7 +62,7 @@ const Pro = () => {
           <div className="mb-6 flex items-end justify-between gap-4">
             <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl">Today’s Deals</h2>
 
-            <a href="#" className="inline-block rounded-lg border bg-white px-4 py-2 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-100 focus-visible:ring active:bg-gray-200 md:px-8 md:py-3 md:text-base">Show more</a>
+           
           </div>
 
           <div className="grid gap-x-4 gap-y-8 sm:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
