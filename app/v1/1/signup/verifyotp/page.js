@@ -32,7 +32,6 @@ const Otp = () => {
     },
   })
 
-
   const handletime = async () => {
     const ansss = await sendotp.mutateAsync(data[0])
     setid(ansss?.data?.otpid)

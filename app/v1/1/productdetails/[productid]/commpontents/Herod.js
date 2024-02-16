@@ -143,7 +143,6 @@ const Herod = () => {
 
                 <span className="ml-2 text-sm text-gray-500">{data?.rating}</span>
 
-                <button onClick={() => window.scrollTo(0, 1100)} href="#" className="ml-4 text-sm font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">View All Reviews</button>
               </div> : null}
 
 

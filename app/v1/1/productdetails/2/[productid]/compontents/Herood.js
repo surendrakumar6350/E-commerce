@@ -155,8 +155,6 @@ raj.current.style.backgroundColor = "green"
           </div>
 
           <span className="ml-2 text-sm text-gray-500">{data?.product.product_rating}</span>
-
-          <button onClick={()=> window.scrollTo(0, 1100)} className="ml-4 text-sm font-semibold text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700">View All Reviews</button>
         </div>
        
         <div className="mb-4 md:mb-6">

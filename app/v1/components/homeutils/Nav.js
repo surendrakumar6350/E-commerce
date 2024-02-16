@@ -10,7 +10,6 @@ import { FiShoppingCart } from "react-icons/fi";
 import { useSelector, useDispatch } from 'react-redux';
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import { Hidden } from '@mui/material';
 import LoadingBar from 'react-top-loading-bar'
 import { useRef } from 'react';
 

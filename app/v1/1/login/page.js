@@ -109,7 +109,7 @@ router.push(`${BASE_URL}/v1/home`)
                     </label>
                   </div>
            
-            <a style={{fontSize: "14px"}} className=' text-purple-400 ml-1' href="#!">Forgot password?</a>
+            <a style={{fontSize: "14px"}} className=' text-purple-400 ml-1' href={`${BASE_URL}/v1/1/forgotpassword`}>Forgot password?</a>
           </div>
 
         
