@@ -1,5 +1,6 @@
 "use client"
-import React from 'react'
+import React, { useRef } from 'react'
+import LoadingBar from 'react-top-loading-bar'
 import { useState } from 'react'
 import { Button } from '@mui/material'
 import { useFormik } from 'formik'
@@ -16,6 +17,7 @@ import { addpiclink } from '@/app/redux/remainingSlices/piclink'
 
 const Addpro = () => {
 const dispatch = useDispatch();
+const ref = useRef(null)
   const [ans, setans] = useState()
   const [progress, setProgress] = useState(0)
   const [file, setFile] = useState()
@@ -54,13 +56,13 @@ const dispatch = useDispatch();
         data.append('file', file)
         data.append("upload_preset", "pwjilpw7")
         data.append("cloud_name", "drlyu0rbn")
-
+        ref.current.continuousStart()
         const res = await fetch('https://api.cloudinary.com/v1_1/drlyu0rbn/image/upload', {
           method: 'POST',
           body: data
         })
         const result = await res.json()
-
+        ref.current.complete()
         if (result.url) {
           if (progress == 0) {
             console.log(result.url)
@@ -82,7 +84,7 @@ const dispatch = useDispatch();
         else {
           setprocess("upload")
         }
-        console.log(piclink)
+       
 
       }
 
@@ -100,7 +102,7 @@ const dispatch = useDispatch();
           onClick: function () { }
         }).showToast();
       }
-      console.log(data)
+      
     }
   }
 
@@ -123,9 +125,11 @@ const dispatch = useDispatch();
       if (typeof (data.url) == "object") {
         (
           async () => {
+            ref.current.continuousStart()
             let ansss = await getuser.mutateAsync(data);
             let anssss = ansss.data;
             setans(anssss)
+            ref.current.complete()
           }
 
         )()
@@ -147,11 +151,11 @@ const dispatch = useDispatch();
       }
     }
   }
-  console.log(ans)
+  
   return (
     <>
       <div className='h-full w-full pl-11 '>
-
+      <LoadingBar color='#f11946' ref={ref} />
 
         <section class="py-1 ">
           <div class="w-full lg:w-8/12 pl-4 mx-auto ">
