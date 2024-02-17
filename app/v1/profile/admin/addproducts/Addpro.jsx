@@ -7,7 +7,6 @@ import { useFormik } from 'formik'
 import { useMutation } from '@tanstack/react-query'
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
-import LoadingBar from 'react-top-loading-bar'
 import axios from 'axios'
 import { BASE_URL } from '@/Constants'
 import { useDispatch, useSelector } from 'react-redux'
