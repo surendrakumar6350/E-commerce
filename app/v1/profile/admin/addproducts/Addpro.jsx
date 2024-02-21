@@ -129,6 +129,18 @@ const ref = useRef(null)
             let anssss = ansss.data;
             setans(anssss)
             ref.current.complete()
+            Toastify({
+              text: "Product added successfully",
+              duration: 3000,
+              close: true,
+              gravity: "top",
+              position: "center",
+              stopOnFocus: true,
+              style: {
+                background: "green",
+              },
+              onClick: function () { }
+            }).showToast();
           }
 
         )()

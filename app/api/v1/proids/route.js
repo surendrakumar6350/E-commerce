@@ -12,8 +12,8 @@ try {
         status: 200,
         success: true,
         productids : [
-            "65cfe7a2d2d2dc7d3ea162b3","65cfe5d71e2005607dfc4ec1","65cfe26a645bf555018d5787","65cfea8663d2b49aa7fde2f1","65b1011d1d2ebe4997300003",
-            "65cc1db24cd5cf40a8c748a8","65ca0f812fc2e0f4170e432e","65ca0f812fc2e0f4170e432e"
+            "65cc1db24cd5cf40a8c748a8","65cfe26a645bf555018d5787","65cfe5d71e2005607dfc4ec1","65cfe7a2d2d2dc7d3ea162b3","65cfea8663d2b49aa7fde2f1",
+            "65d58f324f72e4724859d033","65d590524f72e4724859d037","65d5924d4f72e4724859d03b"
           ]
     })
 }
