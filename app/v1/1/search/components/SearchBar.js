@@ -1,7 +1,8 @@
 "use client"
 import React from 'react'
+import Suggestion from './Suggestion'
 
-const SearchBar = ({ set, loading, handle, get, search }) => {
+const SearchBar = ({handlesuggestion, suggestion, set, loading, handle, get, search }) => {
   return (
     <>
 
@@ -21,6 +22,12 @@ const SearchBar = ({ set, loading, handle, get, search }) => {
               </div> : "Search"}
             </button>
           </div>
+          {suggestion.length > 1 ? suggestion?.map((e)=> {
+            return (
+              <Suggestion e={e} handlesuggestion={handlesuggestion} />
+            )
+          }) : null}
+          
         </form>
         <div className={`${get ? "hidden" : null} mt-8`}>
           <h2 className="text-2xl font-bold mb-4">Latest Searches</h2>

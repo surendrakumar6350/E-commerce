@@ -156,7 +156,7 @@ const handlerating = (e)=> {
   {data?.map((e)=> {
 return (
 <div className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-        <Link href={`${BASE_URL}/v1/1/productdetails/2/${e.product_id}`}>
+        <a href={`${BASE_URL}/v1/1/productdetails/2/${e.product_id}`}>
             <img src={e.product_photos[0]}
                     alt="Product" className="h-80 w-72 object-cover rounded-t-xl" />
             <div className="px-4 py-3 w-72">
@@ -193,7 +193,7 @@ return (
                     </div>
                 </div>
             </div>
-        </Link>
+        </a>
     </div>
 )
   })} 

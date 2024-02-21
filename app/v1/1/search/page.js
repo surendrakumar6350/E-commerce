@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import LoadingBar from 'react-top-loading-bar'
 import { useState } from 'react'
 import Nav from '../../components/homeutils/Nav'
@@ -13,12 +13,13 @@ const page = () => {
   const ref = useRef(null)
   const [searchdata, setsearchdata] = useState();
   const [result, setresult] = useState();
+  const [suggestion, setSuggestion] = useState([]);
   const [loading, setloading] = useState(false);
   const [hidden, sethidden] = useState(false);
 
 
   const handleclick = (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     setloading(true);
     sethidden(true);
 
@@ -40,25 +41,47 @@ const page = () => {
       try {
         ref.current.continuousStart()
         const response = await axios.request(options);
+        setsearchdata("")
         setresult(response.data.data);
         setloading(false);
         ref.current.complete()
       } catch (error) {
         console.error(error);
+        setsearchdata("")
         setloading(false);
         ref.current.complete()
       }
     })()
-
-
   }
 
+  let timeoutId;
+useEffect(()=> {
+const debounce = (func, delay) => {
+  clearTimeout(timeoutId);
+  timeoutId = setTimeout(func, delay);
+};
+debounce(async() => {
+  if(searchdata?.length > 1) { 
+  const ans = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchdata}`)
+  console.log(ans.data)
+  setSuggestion(ans.data)
+  }
+   }, );
+ 
 
+},[searchdata])
+
+const handlesuggestion = (e)=> {
+  setSuggestion([])
+setsearchdata(e)
+handleclick()
+
+}
   return (
     <>
      <LoadingBar color='#f11946' ref={ref} />
       <Nav />
-      <SearchBar loading={loading} search={searchdata} get={result} set={setsearchdata} handle={handleclick} />
+      <SearchBar handlesuggestion={handlesuggestion} suggestion={suggestion} loading={loading} search={searchdata} get={result} set={setsearchdata} handle={handleclick} />
       <Results loading={loading} result={result} />
       <Footer />
     </>
