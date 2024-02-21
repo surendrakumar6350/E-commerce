@@ -8,8 +8,7 @@ import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { addhomeproducts } from '@/app/redux/remainingSlices/Homeproducts'
 
-const Pro = () => {
-  const [products, setproducts] = useState();
+const Pro = ({products, setproducts}) => {
   const [productids, setproductids] = useState([]);
 
   const dispatch = useDispatch();
@@ -57,7 +56,7 @@ const Pro = () => {
 
   return (
     <>
-      <div className="bg-white py-6 sm:py-8 lg:py-12">
+    {products?.length > 7 ?  <div className="bg-white py-6 sm:py-8 lg:py-12">
         <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
           <div className="mb-6 flex items-end justify-between gap-4">
             <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl">Today’s Deals</h2>
@@ -95,7 +94,8 @@ const Pro = () => {
 
           </div>
         </div>
-      </div>
+      </div> : null}
+      
     </>
   )
 }

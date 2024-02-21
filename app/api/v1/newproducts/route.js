@@ -13,7 +13,7 @@ try {
     if(product) {
        let len = product.length;
        let newarr = [];
-       let filter = [len - 1, len - 2, len - 3, len - 4];
+       let filter = [len - 0, len - 1, len - 2, len - 3];
        filter.map((a)=> {
         product.map((e)=> {
             if(e.index == a) {
