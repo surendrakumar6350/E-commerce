@@ -46,7 +46,7 @@ export async function POST(request) {
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: process.env.GMAIL,
+                user: "papa.kaa.dinosaur@gmail.com",
                 pass: process.env.GMAILPASSWORD,
             },
         });
@@ -54,7 +54,7 @@ export async function POST(request) {
         // async..await is not allowed in global scope, must use a wrapper
         async function main() {
             const info = await transporter.sendMail({
-                from: process.env.GMAIL,
+                from: "papa.kaa.dinosaur@gmail.com",
                 to: email,
                 subject: "Password Reset Request: Action Required",
                 text: "",

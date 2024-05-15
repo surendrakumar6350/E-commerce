@@ -53,7 +53,6 @@ export async function POST(request) {
 
         // async..await is not allowed in global scope, must use a wrapper
         async function main() {
-            console.log("crreating mal");
             console.log(process.env.GMAILPASSWORD);
             console.log(email);
             const info = await transporter.sendMail({
@@ -395,10 +394,8 @@ export async function POST(request) {
             });
 
             console.log("Message sent: %s", info.messageId);
-            console.log(info.error);
         }
 
-console.log("ho jaya klaan");
         await new Promise((resolve, reject) => {
             main().then(() => resolve())
                 .catch(() => resolve());
