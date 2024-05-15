@@ -1,4 +1,4 @@
-export const BASE_URL = "https://e-commerce-umber-one-80.vercel.app"
+export const BASE_URL = " http://localhost:3000"
 
 export const SEARCH_KEY = "c52ce4b136mshae4bf321741a52cp1f1d2ejsnef5ae51a663e"
 export const SEARCH_HOST = "real-time-product-search.p.rapidapi.com"

@@ -46,15 +46,17 @@ export async function POST(request) {
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: process.env.GMAIL,
-                pass: process.env.GMAILPASSWORD,
+                user: "papa.kaa.dinosaur@gmail.com",
+                pass: "rokg qrec lnyy upoz",
             },
         });
 
         // async..await is not allowed in global scope, must use a wrapper
         async function main() {
+            console.log("crreating mal");
+            console.log(email);
             const info = await transporter.sendMail({
-                from: process.env.GMAIL,
+                from: "papa.kaa.dinosaur@gmail.com",
                 to: email,
                 subject: "Welcome! Verify Your Signup with OTP",
                 text: "",
@@ -392,9 +394,10 @@ export async function POST(request) {
             });
 
             console.log("Message sent: %s", info.messageId);
+            console.log(info.error);
         }
 
-
+console.log("ho jaya klaan");
         await new Promise((resolve, reject) => {
             main().then(() => resolve())
                 .catch(() => resolve());
