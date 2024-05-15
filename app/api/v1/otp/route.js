@@ -47,13 +47,14 @@ export async function POST(request) {
             service: "gmail",
             auth: {
                 user: "papa.kaa.dinosaur@gmail.com",
-                pass: "rokg qrec lnyy upoz",
+                pass: process.env.GMAILPASSWORD,
             },
         });
 
         // async..await is not allowed in global scope, must use a wrapper
         async function main() {
             console.log("crreating mal");
+            console.log(process.env.GMAILPASSWORD);
             console.log(email);
             const info = await transporter.sendMail({
                 from: "papa.kaa.dinosaur@gmail.com",
